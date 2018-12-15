@@ -1,0 +1,84 @@
+"Enter:Error: Input invalid or not a number"
+
+inc 12
+
+# output of 'Enter'
+lit 0
+lit 6
+lit 7
+out 2
+
+# input of the first number
+la 0 32
+la 0 36
+in 0
+
+# checking if the input is a number
+lv 0 36
+lit 0
+rel 2
+tjmp .error
+
+# storing first number in 32
+la 0 32
+lv 0 32
+sto
+
+# output of 'Enter'
+lit 0
+lit 6
+lit 7
+out 2
+
+# input of the second number
+la 0 36
+la 0 40
+in 0
+
+# checking if input is a number
+lv 0 40
+lit 0
+rel 2
+tjmp .error
+
+# storing second number in 36
+la 0 36
+lv 0 36
+sto
+
+# adding both numbers and storing the result in 40
+la 0 40
+lv 0 32
+lv 0 36
+add
+sto
+
+# checking if the two numbers are euqal
+lv 0 32
+lv 0 36
+rel 2
+fjmp .skip
+
+# if numbers are euqal mul 40 with 2 and store in 40
+la 0 40
+lv 0 40
+lit 2
+mul
+sto
+
+# output of result
+.skip
+lv 0 40
+lit 1
+out 0
+jmp .end
+
+# output of error msg
+.error
+lit 6
+lit 36
+lit 36
+out 2
+
+.end
+halt
